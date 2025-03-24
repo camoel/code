@@ -43,4 +43,19 @@ type 事件名（事件类型） */
     });
     //挨个执行每一个消息的回调函数callback
   }
+
+  /**
+   * type事件名
+   * callback 回调函数
+   */
+  $once(type, callback) {
+    const onceCallback = (...args) => {
+      //定义一个包装函数，在回调函数执行后取消订阅
+      callback(...args);
+      this.$off(type, onceCallback);
+    };
+    //使用$on方法订阅包装后的函数
+    this.$on(type, onceCallback);
+  }
 }
+

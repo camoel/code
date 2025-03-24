@@ -1,7 +1,7 @@
 Promise.race=function(promises){
 return new Promise((resolve,reject)=>{
   if(!Array.isArray){
-     throw new TypeError("Argument is not iterable");
+    throw new TypeError("Argument is not iterable");
   }
   //等待一个敲定
   promises.forEach(p=>{
