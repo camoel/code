@@ -23,7 +23,7 @@ var findKthLargest=function(nums,k){
     //重新调整大顶堆
     maxHeapify(nums,0,heapSize)
     }
-   return nums[0];
+  return nums[0];
   //自下而上构建一颗大顶堆
   function buildMaxHeap(nums,heapSize){
   for(let i=Math.floor(heapSize/2)-1;i>=0;i--){
