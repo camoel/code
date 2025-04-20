@@ -3,33 +3,26 @@
  * 例如：输入'aaasfjkjkbbbdjkjssjccc'，输出：['aaa', 'bbb', 'ss', 'ccc']
  */
 
-function findConsecutiveRepeats(str) {
-    if (str.length === 0) return [];
-    const result = [];
-    let currentChar = str[0];
-    let count = 1;
-    
-    for (let i = 1; i < str.length; i++) {
-        if (str[i] === currentChar) {
-            count++;
-        } else {
-            if (count >= 2) {
-                result.push(currentChar.repeat(count));
+function findRepeats(str) {
+    let res=[]
+    let current=""
+    for(let i=0;i<str.length;i++){
+        if(i===0||str[i-1]==str[i]){
+            current+=str[i]
+        }else{
+            if (current.length > 1) {
+            res.push(current);
             }
-            currentChar = str[i];
-            count = 1;
+            current=str[i]
         }
+        
     }
-    
-    // 处理末尾的连续字符
-    if (count >= 2) {
-        result.push(currentChar.repeat(count));
+    if(current.length>1){
+        res.push(current)
     }
-    
-    return result;
+    return res
 }
 
-// 示例测试
-console.log(findConsecutiveRepeats('aaasfjkjkbbbdjkjssjccc')); // 输出: ['aaa', 'bbb', 'ss', 'ccc']
-console.log(findConsecutiveRepeats('abc')); // 输出: []
-console.log(findConsecutiveRepeats('aabbaabb')); // 输出: ['aa', 'bb', 'aa', 'bb']
+const input = "aaasfjkjkbbbdjkjssjccc";
+const output = findRepeats(input);
+console.log(output);
